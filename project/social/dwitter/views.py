@@ -16,7 +16,7 @@ from .forms import CustomUserCreationForm
 
 # dwitter/views.py
 def index(request): 
-    return render(request, 'logina.html')
+    return render(request, 'login.html')
 @csrf_exempt
 def dashboard(request):
     form = DweetForm(request.POST or None)
