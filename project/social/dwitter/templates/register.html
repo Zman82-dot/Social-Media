@@ -1,0 +1,46 @@
+<!--users/templates/users/register.html-->
+
+{% extends 'base.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include the Bulma CSS framework for styling -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+          <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+          <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  
+          <title>Dwitter</title>
+</head>
+<body  style="align-items: center;background-color:rgba(128, 0, 128, 0.294);">
+    <section class="head" style="background-image:linear-gradient(rgb(231, 98, 231),purple,rgb(32, 3, 70));color:whitesmoke;">
+        
+                
+            </div>
+            <h1 class="title is-1" style="color:whitesmoke" >Soci@l</h1>
+            <h1 style="text-align: center;">@Register</h1>
+            <p class="subtitle is-4" style="color:whitesmoke">
+                Powered by Django©️
+            </p>
+        </div>
+    </section>
+
+    <!-- Stylize Registration form -->
+    {% block content %}
+    
+   <div class="card" style="align-content: normal;padding:40px;margin:30px;background-color: blueviolet;"> 
+    <form method="post">
+        <div class="card-content">
+        {% csrf_token %}
+        {{ form.as_p }}
+        {% csrf_token %}
+        
+        <button type="submit" value="Register" class="btn-primary">Register</button>
+    </form>
+    
+    <a href="{% url 'dwitter:login' %}">Back to login</a>
+    {% endblock %}

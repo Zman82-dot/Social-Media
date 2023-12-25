@@ -1,0 +1,57 @@
+<!-- dwitter/templates/dwitter/dashboard.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="column">
+    
+    {% for dweet in dweets %}
+    <div class="box">
+        {{dweet.body}}
+        <span class="is-small has-text-grey-light">
+            {{ dweet.created_at }} by {{ dweet.user.username }}
+        </span>
+    </div>
+{% endfor %}
+    
+</div>
+
+<div class="column is-one-third" style="margin: 20px;">
+    <!-- dwitter/templates/dwitter/dashboard.html -->
+
+<!-- ... -->
+<div class="card" style="align-items: center;background-color:rgba(128, 0, 128, 0.294);">
+<div class="card-content" style="box-shadow: 5px 5px 5px rgb(138, 137, 137);padding: 20px;background-image:linar-gradient (white,violet,purple);">
+    <a href="{% url 'dwitter:profile_list' %} ">
+        <button class="button is-dark is-outlined is-fullwidth" style="background-image:linear-gradient(rgb(231, 98, 231),purple,rgb(32, 3, 70));color:whitesmoke;box-shadow: 5px 5px 5px rgb(138, 137, 137)"
+        >
+            All Profiles
+        </button>
+    </a>
+
+
+    <a href="{% url 'dwitter:profile' request.user.profile.id %} ">
+        <button class="button is-success is-light is-outlined is-fullwidth" style="background-image:linear-gradient(rgb(231, 98, 231),purple,rgb(32, 3, 70));color:whitesmoke;box-shadow: 5px 5px 5px rgb(138, 137, 137);margin:10px;" 
+        >
+            My Profile
+        </button>
+    </a>
+
+
+<!-- ... -->
+    <h3 class="title is-3">What's on your mind?</h3>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="button is-success is-fullwidth is-medium mt-5" style="background-image:linear-gradient(rgb(231, 98, 231),purple,rgb(32, 3, 70));color:whitesmoke;box-shadow: 5px 5px 5px rgb(138, 137, 137)"
+                type="submit">Post
+        </button>
+    </form>
+    </div>
+</div>
+</div>
+</div>
+</div>
+
+{% endblock content %}
